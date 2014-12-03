@@ -58,43 +58,56 @@ class Controller_User extends Controller {
 	public function action_register()
 	{
 		session_start();
-		$view=View::Factory("users/register");
-
+		
 		if ($_POST)
 		{	 
+			$myData= json_decode($_POST['myData']);		
+			  $myData =  (array) $myData;
+			  
+			 
 			  try
 			  {
-			  	 $username = $_POST["username"];
-			  	 $email = $_POST["email"];
-			  	 $password = $_POST["password"];
+			  	 $UserPassword = $myData["UserPassword"];
+			  	 $UserFirstName = $myData["UserFirstName"];
+			  	 $UserLastName = $myData["UserLastName"];
+			  	 $UserEmail = $myData["UserEmail"];
 
-			  	if (empty($username))
-			  		throw new Exception("empty login");
-			  	if (empty($password))
+			  	if (empty($UserLastName))
+			  		throw new Exception("empty LastName");
+			  	if (empty($UserFirstName))
+			  		throw new Exception("empty FirstName");
+			  	if (empty($UserPassword))
 			  		throw new Exception("empty password");
-			  	if (strlen($password)<8)
+			  	if (strlen($UserPassword)<8)
 			  		throw new Exception("password must have at least 8 character");
-			  	if (!filter_var($email,FILTER_VALIDATE_EMAIL))
+			  	if (!filter_var($UserEmail,FILTER_VALIDATE_EMAIL))
 			  		throw new Exception("Invalid email");
 			  	
-			  	 $password = password_hash($_POST["password"],PASSWORD_DEFAULT);	
+			  	 $UserPassword = password_hash($UserPassword,PASSWORD_DEFAULT);	
 
 			    $account = new Model_User();
-			    $_POST['password']=$password;
-			    $accountId=$account->save($_POST);
-			    $this->redirect("login");
+			   $myData["UserPassword"]=$UserPassword;
+			    $accountId=$account->save($myData);
+			   // $this->redirect("index");
 
 			  }
 			  catch(Exception $e)
 			  {
 			
-			  	$_SESSION["errorMessage"]= $e->getMessage();
-			  	$this->response->body($view);
+			  	//$_SESSION["errorMessage"]= $e->getMessage();
+			  	//$view=View::Factory("users/register");
+			  	//$this->response->body($view);
+			  	
+			  	//header('Cache-Control: no-cache, must-revalidate');
+				//header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+				header('Content-type: application/json');
+			  	echo '{"msgError":"'.$e->getMessage().'"}';
 			  }
 
 		}
 		else
 		{
+			$view=View::Factory("users/register");
 			$this->response->body($view);
 		}
 

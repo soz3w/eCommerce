@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `optiongroups` (
   `OptionGroupID` int(11) NOT NULL AUTO_INCREMENT,
-  `OptionGroupName` varchar(50) COLLATE latin1_german2_ci DEFAULT NULL,
+  `OptionGroupName` varchar(50) COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`OptionGroupID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `optiongroups`
@@ -49,9 +49,9 @@ INSERT INTO `optiongroups` (`OptionGroupID`, `OptionGroupName`) VALUES
 CREATE TABLE IF NOT EXISTS `options` (
   `OptionID` int(11) NOT NULL AUTO_INCREMENT,
   `OptionGroupID` int(11) DEFAULT NULL,
-  `OptionName` varchar(50) COLLATE latin1_german2_ci DEFAULT NULL,
+  `OptionName` varchar(50) COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`OptionID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `options`
@@ -77,12 +77,12 @@ CREATE TABLE IF NOT EXISTS `orderdetails` (
   `DetailID` int(11) NOT NULL AUTO_INCREMENT,
   `DetailOrderID` int(11) NOT NULL,
   `DetailProductID` int(11) NOT NULL,
-  `DetailName` varchar(250) COLLATE latin1_german2_ci NOT NULL,
+  `DetailName` varchar(250) COLLATE utf8_general_ci NOT NULL,
   `DetailPrice` float NOT NULL,
-  `DetailSKU` varchar(50) COLLATE latin1_german2_ci NOT NULL,
+  `DetailSKU` varchar(50) COLLATE utf8_general_ci NOT NULL,
   `DetailQuantity` int(11) NOT NULL,
   PRIMARY KEY (`DetailID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -94,23 +94,23 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `OrderID` int(11) NOT NULL AUTO_INCREMENT,
   `OrderUserID` int(11) NOT NULL,
   `OrderAmount` float NOT NULL,
-  `OrderShipName` varchar(100) COLLATE latin1_german2_ci NOT NULL,
-  `OrderShipAddress` varchar(100) COLLATE latin1_german2_ci NOT NULL,
-  `OrderShipAddress2` varchar(100) COLLATE latin1_german2_ci NOT NULL,
-  `OrderCity` varchar(50) COLLATE latin1_german2_ci NOT NULL,
-  `OrderState` varchar(50) COLLATE latin1_german2_ci NOT NULL,
-  `OrderZip` varchar(20) COLLATE latin1_german2_ci NOT NULL,
-  `OrderCountry` varchar(50) COLLATE latin1_german2_ci NOT NULL,
-  `OrderPhone` varchar(20) COLLATE latin1_german2_ci NOT NULL,
-  `OrderFax` varchar(20) COLLATE latin1_german2_ci NOT NULL,
+  `OrderShipName` varchar(100) COLLATE utf8_general_ci NOT NULL,
+  `OrderShipAddress` varchar(100) COLLATE utf8_general_ci NOT NULL,
+  `OrderShipAddress2` varchar(100) COLLATE utf8_general_ci NOT NULL,
+  `OrderCity` varchar(50) COLLATE utf8_general_ci NOT NULL,
+  `OrderState` varchar(50) COLLATE utf8_general_ci NOT NULL,
+  `OrderZip` varchar(20) COLLATE utf8_general_ci NOT NULL,
+  `OrderCountry` varchar(50) COLLATE utf8_general_ci NOT NULL,
+  `OrderPhone` varchar(20) COLLATE utf8_general_ci NOT NULL,
+  `OrderFax` varchar(20) COLLATE utf8_general_ci NOT NULL,
   `OrderShipping` float NOT NULL,
   `OrderTax` float NOT NULL,
-  `OrderEmail` varchar(100) COLLATE latin1_german2_ci NOT NULL,
+  `OrderEmail` varchar(100) COLLATE utf8_general_ci NOT NULL,
   `OrderDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `OrderShipped` tinyint(1) NOT NULL DEFAULT '0',
-  `OrderTrackingNumber` varchar(80) COLLATE latin1_german2_ci DEFAULT NULL,
+  `OrderTrackingNumber` varchar(80) COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`OrderID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -120,9 +120,9 @@ CREATE TABLE IF NOT EXISTS `orders` (
 
 CREATE TABLE IF NOT EXISTS `productcategories` (
   `CategoryID` int(11) NOT NULL AUTO_INCREMENT,
-  `CategoryName` varchar(50) COLLATE latin1_german2_ci NOT NULL,
+  `CategoryName` varchar(50) COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`CategoryID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `productcategories`
@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `productoptions` (
   `OptionPriceIncrement` double DEFAULT NULL,
   `OptionGroupID` int(11) NOT NULL,
   PRIMARY KEY (`ProductOptionID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `productoptions`
@@ -173,23 +173,23 @@ INSERT INTO `productoptions` (`ProductOptionID`, `ProductID`, `OptionID`, `Optio
 
 CREATE TABLE IF NOT EXISTS `products` (
   `ProductID` int(12) NOT NULL AUTO_INCREMENT,
-  `ProductSKU` varchar(50) COLLATE latin1_german2_ci NOT NULL,
-  `ProductName` varchar(100) COLLATE latin1_german2_ci NOT NULL,
+  `ProductSKU` varchar(50) COLLATE utf8_general_ci NOT NULL,
+  `ProductName` varchar(100) COLLATE utf8_general_ci NOT NULL,
   `ProductPrice` float NOT NULL,
   `ProductWeight` float NOT NULL,
-  `ProductCartDesc` varchar(250) COLLATE latin1_german2_ci NOT NULL,
-  `ProductShortDesc` varchar(1000) COLLATE latin1_german2_ci NOT NULL,
-  `ProductLongDesc` text COLLATE latin1_german2_ci NOT NULL,
-  `ProductThumb` varchar(100) COLLATE latin1_german2_ci NOT NULL,
-  `ProductImage` varchar(100) COLLATE latin1_german2_ci NOT NULL,
+  `ProductCartDesc` varchar(250) COLLATE utf8_general_ci NOT NULL,
+  `ProductShortDesc` varchar(1000) COLLATE utf8_general_ci NOT NULL,
+  `ProductLongDesc` text COLLATE utf8_general_ci NOT NULL,
+  `ProductThumb` varchar(100) COLLATE utf8_general_ci NOT NULL,
+  `ProductImage` varchar(100) COLLATE utf8_general_ci NOT NULL,
   `ProductCategoryID` int(11) DEFAULT NULL,
   `ProductUpdateDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ProductStock` float DEFAULT NULL,
   `ProductLive` tinyint(1) DEFAULT '0',
   `ProductUnlimited` tinyint(1) DEFAULT '1',
-  `ProductLocation` varchar(250) COLLATE latin1_german2_ci DEFAULT NULL,
+  `ProductLocation` varchar(250) COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`ProductID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=991 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=991 ;
 
 --
 -- Dumping data for table `products`
@@ -207,24 +207,24 @@ INSERT INTO `products` (`ProductID`, `ProductSKU`, `ProductName`, `ProductPrice`
 
 CREATE TABLE IF NOT EXISTS `users` (
   `UserID` int(11) NOT NULL AUTO_INCREMENT,
-  `UserEmail` varchar(500) COLLATE latin1_german2_ci DEFAULT NULL,
-  `UserPassword` varchar(500) COLLATE latin1_german2_ci DEFAULT NULL,
-  `UserFirstName` varchar(50) COLLATE latin1_german2_ci DEFAULT NULL,
-  `UserLastName` varchar(50) COLLATE latin1_german2_ci DEFAULT NULL,
-  `UserCity` varchar(90) COLLATE latin1_german2_ci DEFAULT NULL,
-  `UserState` varchar(20) COLLATE latin1_german2_ci DEFAULT NULL,
-  `UserZip` varchar(12) COLLATE latin1_german2_ci DEFAULT NULL,
+  `UserEmail` varchar(500) COLLATE utf8_general_ci DEFAULT NULL,
+  `UserPassword` varchar(500) COLLATE utf8_general_ci DEFAULT NULL,
+  `UserFirstName` varchar(50) COLLATE utf8_general_ci DEFAULT NULL,
+  `UserLastName` varchar(50) COLLATE utf8_general_ci DEFAULT NULL,
+  `UserCity` varchar(90) COLLATE utf8_general_ci DEFAULT NULL,
+  `UserState` varchar(20) COLLATE utf8_general_ci DEFAULT NULL,
+  `UserZip` varchar(12) COLLATE utf8_general_ci DEFAULT NULL,
   `UserEmailVerified` tinyint(1) DEFAULT '0',
   `UserRegistrationDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `UserVerificationCode` varchar(20) COLLATE latin1_german2_ci DEFAULT NULL,
-  `UserIP` varchar(50) COLLATE latin1_german2_ci DEFAULT NULL,
-  `UserPhone` varchar(20) COLLATE latin1_german2_ci DEFAULT NULL,
-  `UserFax` varchar(20) COLLATE latin1_german2_ci DEFAULT NULL,
-  `UserCountry` varchar(20) COLLATE latin1_german2_ci DEFAULT NULL,
-  `UserAddress` varchar(100) COLLATE latin1_german2_ci DEFAULT NULL,
-  `UserAddress2` varchar(50) COLLATE latin1_german2_ci DEFAULT NULL,
+  `UserVerificationCode` varchar(20) COLLATE utf8_general_ci DEFAULT NULL,
+  `UserIP` varchar(50) COLLATE utf8_general_ci DEFAULT NULL,
+  `UserPhone` varchar(20) COLLATE utf8_general_ci DEFAULT NULL,
+  `UserFax` varchar(20) COLLATE utf8_general_ci DEFAULT NULL,
+  `UserCountry` varchar(20) COLLATE utf8_general_ci DEFAULT NULL,
+  `UserAddress` varchar(100) COLLATE utf8_general_ci DEFAULT NULL,
+  `UserAddress2` varchar(50) COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`UserID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

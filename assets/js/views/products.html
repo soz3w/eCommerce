@@ -1,0 +1,25 @@
+<h3>The T-shirts</h3>
+<div ng-controller="ProductsCtrl">
+<table ng-table>
+	<tr>
+		
+		<td>Ref</td>
+		<td>Name</td>
+		<td>Desc</td>
+		<td>Price</td>		
+		<td>Category</td>
+	</tr>
+	<tr ng-repeat="product in products">
+		
+		<td>{{product.productSKU}}</td>
+		<td>{{product.productName}}</td>
+		<td>{{product.productCartDesc}}</td>
+		<td>{{product.productPrice}}</td>
+		<td>{{product.productCategoryID}}</td>
+	</tr>
+</table>
+ 
+<ul class="paginate pagination pagination-sm">
+	<li class="active" id="-li"><a href="#" class="paginate_click" id="'.$i.'-page"></li>
+</ul>	
+</div>

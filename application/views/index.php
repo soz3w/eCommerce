@@ -20,6 +20,9 @@
               article.col-sm-6, nav.col-sm-2 {
                 
               }
+              .msgError{
+                color : red;
+              }
               .input-xs {
                 height: 22px;
                 padding: 5px 5px;
@@ -30,7 +33,7 @@
                 .titreSite{
                     text-shadow: 0px 0px 30px rgba(0, 0, 0, 0.95);
                     color: #000;
-                    font-size: 50px;
+                    font-size: 20px;
                   }
                 
                 .panel-body{
@@ -88,7 +91,7 @@
            <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
               <ul class="nav navbar-nav">
-                <li class="active"> <a class ="accueil" href="#" onclick="return false;">Home</a> </li>
+                <li class="active"> <a class ="accueil" href="#/products">Home</a> </li>
                 <li> <a class ="login" href="#/login">Log in</a> </li>
                 <li> <a class ="register" href="#/register" >Register</a> </li>
                 <li> <a class ="contact" href="#" onclick="return false;">Contact</a> </li>
@@ -185,8 +188,10 @@
     <script src="/vendor/js/bootstrap.min.js"></script>
     <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
     <script src="assets/js/app.js"></script>      
-    <script src="assets/js/models/service.js"></script>      
+    <script src="assets/js/models/serviceUser.js"></script>      
+    <script src="assets/js/models/serviceProduct.js"></script>      
     <script src="assets/js/controllers/userCtrl.js"></script>      
+    <script src="assets/js/controllers/productCtrl.js"></script>      
     
     
   </body>

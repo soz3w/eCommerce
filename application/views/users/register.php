@@ -1,17 +1,8 @@
-<?php 
-   
-    if (isset($_SESSION["errorMessage"]))
-    {
-        $msg = $_SESSION["errorMessage"];
-         unset($_SESSION["errorMessage"]);
-    }
-
-?>
-<h3> <?php if (isset($msg)) echo $msg;  ?></h3>
 <div ng-controller="UsersCtrl">
+
   <small>
     <form role="form"  class="well form-horizontal col-xs-9" ng-submit="register()">
-            <p class="warning" id="MessageError"></p>
+            <p class="msgError"> </p>
             <div class="form-group">
               <label for="UserFirstName" class="col-xs-3 control-label">First Name</label>
               <div class="col-xs-7">

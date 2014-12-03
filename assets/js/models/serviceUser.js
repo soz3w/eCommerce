@@ -1,4 +1,4 @@
-app.factory('UserFactory',function($http){
+app.factory('UserFactory',function($http,$location){
 			
 			var factory ={
 				//false comme cache, on met les users dans unfichier json exterieur
@@ -23,19 +23,21 @@ app.factory('UserFactory',function($http){
 					//faire pareil avec les promesses
 				},
 				register:function(user){
-					user = JSON.stringify(user);
-					console.log(user);
+					
+					var postData = 'myData='+JSON.stringify(user);
+					//console.log(user);
 					var req = {
 								 method: 'POST',
 								 url: 'user/register',
-								 data: user,
+								 data: postData,
+								 headers : {'Content-Type': 'application/x-www-form-urlencoded'}
 								}
-					$http(req).success(function(){
-
+					$http(req).success(function(response){
+									 if (response.msgError)
+										$(".msgError").html(response.msgError);
+										
 								})
-								.error(function(){
-
-								});
+								.error(function(){});
 
 					 
 				}

@@ -1,0 +1,1 @@
+ProductSKU, ProductName, ProductPrice, ProductWeight, ProductCartDesc, ProductShortDesc, ProductLongDesc, ProductThumb, ProductImage, ProductCategoryID, ProductUpdateDate, ProductStock, ProductLive, ProductUnlimited, ProductLocation
