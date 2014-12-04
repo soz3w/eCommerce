@@ -6,7 +6,8 @@ app.config(function($routeProvider){
 		.when('/login',{templateUrl:'user/login'})
 		.when('/register',{templateUrl:'user/register'})
 		.when('/products',{templateUrl:'assets/js/views/products.html'})
-		.otherwise({redirectTo: "#products"})
+		.when('/essai',{templateUrl:'assets/js/views/essai.html'})
+		.otherwise({redirectTo: "assets/js/views/essai.html"})
 
 });
 

@@ -109,7 +109,7 @@
                 <li ng-class="{ active: isActive('/products')}"> <a class ="accueil" href="#/products">Home</a> </li>
                 <li ng-class="{ active: isActive('/login')}"> <a class ="login" href="#/login">Log in</a> </li>
                 <li ng-class="{ active: isActive('/register')}"> <a class ="register" href="#/register" >Register</a> </li>
-                <li> <a class ="contact" href="#" onclick="return false;">Contact</a> </li>
+                <li> <a class ="contact" href="#/essai">Contact</a> </li>
                 <li class="dropdown"> <a data-toggle="dropdown" class ="others" href="#" onclick="return false;">
                                         Others...<b class="caret"></b>
                                       </a>
@@ -207,6 +207,7 @@
     <script src="assets/js/models/serviceProduct.js"></script>      
     <script src="assets/js/controllers/userCtrl.js"></script>      
     <script src="assets/js/controllers/productCtrl.js"></script>      
+    <script src="assets/js/controllers/essai.js"></script>      
     
     
   </body>
