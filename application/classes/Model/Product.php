@@ -17,7 +17,7 @@ class Model_Product {
 	
 	public function getProducts($limit1=0, $limit2=100)
 	{
-		$sql =  " select products.* ";
+		$sql =  " select *";
 		$sql.=  " from products ";
 		$sql.= " limit $limit1,$limit2";
 		return $this->db->query($sql);

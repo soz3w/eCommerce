@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html ng-app="eCommerce">
+<html>
   <head>
    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">   
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/vendor/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/css/bootstrap-theme.min.css">
-    
     <title>La Boutique en ligne</title>
     <style type="text/css">
        body {
               padding-top: 50px;
-              background-image: url('assets/images/website-background.jpg');
+              /*background-image: url('assets/images/website-background.jpg');*/
             }
      
               footer {
@@ -33,6 +33,11 @@
                 .titreSite{
                     text-shadow: 0px 0px 30px rgba(0, 0, 0, 0.95);
                     color: #000;
+                    font-size: 20px;
+                  }
+                  .titreProduit{
+                    text-shadow: 0px 10px 30px rgba(200, 100, 200, 0.95);
+                    color: #DDD;
                     font-size: 20px;
                   }
                 
@@ -77,9 +82,19 @@
                 .panel-heading:nth-child(n+2){
                   margin-top: 5px;
                 }
+                table{
+                  background-color: white;
+                }
+                td,th{
+                  text-align: center;
+                }
+                .image{
+                  width:70px;
+                }
+                img{width:100%;}
     </style>
   </head>
-  <body>
+  <body ng-app="eCommerce">
     <div class="container">
       <header class="row">
         <div class="col-sm-12 col-lg-12">
@@ -90,10 +105,10 @@
       
            <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
-              <ul class="nav navbar-nav">
-                <li class="active"> <a class ="accueil" href="#/products">Home</a> </li>
-                <li> <a class ="login" href="#/login">Log in</a> </li>
-                <li> <a class ="register" href="#/register" >Register</a> </li>
+              <ul class="nav navbar-nav" ng-controller="MenuManage">
+                <li ng-class="{ active: isActive('/products')}"> <a class ="accueil" href="#/products">Home</a> </li>
+                <li ng-class="{ active: isActive('/login')}"> <a class ="login" href="#/login">Log in</a> </li>
+                <li ng-class="{ active: isActive('/register')}"> <a class ="register" href="#/register" >Register</a> </li>
                 <li> <a class ="contact" href="#" onclick="return false;">Contact</a> </li>
                 <li class="dropdown"> <a data-toggle="dropdown" class ="others" href="#" onclick="return false;">
                                         Others...<b class="caret"></b>
@@ -109,7 +124,7 @@
               </ul>
               <form class="navbar-form navbar-right inline-form">
                 <div class="form-group">
-                  <input type="search" class="input-xs form-control" placeholder="Recherche">
+                  <input type="search" class="input-xs form-control" placeholder="Recherche" ng-model="query">
                   <button class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-eye-open"></span> Chercher</button>
                 </div>
               </form>
@@ -182,11 +197,11 @@
           </footer>
     </div>
      <script src="/vendor/js/jquery-2.1.1.min.js"></script> 
-     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>    
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.min.js"></script>  
     <script src="/vendor/js/bootstrap.min.js"></script>
-    <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+    <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>    
     <script src="assets/js/app.js"></script>      
     <script src="assets/js/models/serviceUser.js"></script>      
     <script src="assets/js/models/serviceProduct.js"></script>      

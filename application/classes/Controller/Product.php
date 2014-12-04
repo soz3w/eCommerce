@@ -77,7 +77,9 @@ class Controller_Product extends Controller {
 			    
 
 		// JSON-encode the response
-		echo $json_response = json_encode($products);
+		header('Content-type: application/json');
+		$json_response = json_encode($products);
+		echo $json_response;
 				
 	}
 	

@@ -6,6 +6,14 @@ app.config(function($routeProvider){
 		.when('/login',{templateUrl:'user/login'})
 		.when('/register',{templateUrl:'user/register'})
 		.when('/products',{templateUrl:'assets/js/views/products.html'})
-		.otherwise({redirectTo: "product/index"})
+		.otherwise({redirectTo: "#products"})
+
+});
+
+ app.controller('MenuManage',function($scope,$location){
+	
+	$scope.isActive = function (viewLocation) { 
+		  return viewLocation === $location.path();
+    };	
 
 });

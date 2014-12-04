@@ -6,7 +6,7 @@ app.factory('ProductFactory',function($http,$q){
 				getProducts:function(){
 					//appel ajax, faudra aussi gerer les delais avec $q, les promesses, execute une function dans le futur
 					var deffered = $q.defer();
-					console.log(deffered);
+					
 					 $http.get('product/getProducts')
 								.success(function(data,status){
 									factory.products=data;																
