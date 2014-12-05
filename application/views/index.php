@@ -55,7 +55,13 @@
                 .form-group{
                    padding-bottom: 10px;
                 }
-                
+                .pagination ul{
+                 list-style-type: none;
+                }
+                .pagination ul li{
+                  display: inline-block;
+                  padding: 1%;
+                }
                 h3
                 {
                   text-align: center;
@@ -92,6 +98,39 @@
                   width:70px;
                 }
                 img{width:100%;}
+
+                .sort-true {
+                      padding-right: 14px;
+                      background: no-repeat right center url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAICAYAAAAvOAWIAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAAX0lEQVQoU32NQQrAMAgEBa+CvfX5PYa+pn/oR2w2xLIQibAgOqMSEYe73wh6oVp2Ztb6PhAWEszd5OTJAQknRJ73Hpz4bMZ1RFXfAgQ3ahEIxsUf3AklWAlbkIWrev0BT3ZAxrSn1UcAAAAASUVORK5CYII=')
+                      /*../Icons/Icon-down-white.png*/
+                  ;
+
+                      /* For IE 6 and 7 */
+                  }
+                  .sort-false {
+                      padding-right: 14px;
+                      background: no-repeat right center url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAICAYAAAAvOAWIAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAAXklEQVQoU2NgwAT8QKH5QAyi8QKQgvNA/B9K49SArBCkGKcGbAqxasBQyMzM/AhqMoYGmBvBEvz8/Cv///8vDqIxNPDw8CyHCUIVCoCCAKhBAFkDWB1MEFkhLLzQ5QBl6UDG/jPuNgAAAABJRU5ErkJggg==')
+                      /*../Icons/Icon-up-white.png*/
+                  ;
+
+                      /* For IE 6 and 7 */
+                  }
+                  .NoData td.NoData {
+                      text-align: center;
+                  }
+                  .even {
+                      background-color: #aaa
+                  }
+                  .odd {
+                      background-color: #fff;
+                  }
+                  .icon {
+                      max-height: 20px;
+                      max-width: 20px;
+                  }
+                  .SelectedRow {
+                      background-color: #888;
+                  }
     </style>
   </head>
   <body ng-app="eCommerce">
@@ -135,8 +174,9 @@
            <div class="row">
                 <section class="col-sm-12">
                   <div class="row">
-                    <div class="col-sm-9">
-                      <div class="row" id="display" ng-view>
+                    <div class="col-sm-9 view-animate-container">
+                      
+                      <div class="row" id="display" ng-view class="view-animate">
                         
                       </div>
                     </div>
@@ -203,6 +243,7 @@
     <script src="/vendor/js/bootstrap.min.js"></script>
     <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>    
     <script src="assets/js/app.js"></script>      
+    <script src="assets/js/models/servicePagination.js"></script>      
     <script src="assets/js/models/serviceUser.js"></script>      
     <script src="assets/js/models/serviceProduct.js"></script>      
     <script src="assets/js/controllers/userCtrl.js"></script>      
