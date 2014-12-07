@@ -10,13 +10,14 @@ app.factory('ProductFactory',function($http,$q){
 				page_number:0,
 				getProducts:function(){
 					
-					var postData = 'myData={"page":'+factory.page+'}';
+					var postData = 'myData={"page":'+factory.page+',"item_per_page":'+factory.item_per_page+'}';
 					//console.log(user);
 					var req = {
 								 method: 'POST',
 								 url: factory.urldata,
 								 data: postData,
-								 headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+								 headers : {'Content-Type': 'application/x-www-form-urlencoded',
+											'Accept':'image/jpg'}
 								}
 
 					//appel ajax, faudra aussi gerer les delais avec $q, les promesses, execute une function dans le futur

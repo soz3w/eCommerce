@@ -1,0 +1,9 @@
+ <div class="form-group" ng-class="(Form.emailAddress.$valid) ? 'has-success has-feedback': 'has-error has-feedback'">
+        <label for="emailAddress">Email address</label>
+        <span ng-show="!Form.emailAddress.$valid">Please enter a valid address</span>
+ 
+        <input type="email" class="form-control" id="emailAddress" name="emailAddress" ng-model="Data.emailAddress" ng-pattern="validationPattern" ng-maxlength="20">
+ 
+        <span ng-show="Form.emailAddress.$valid" class="glyphicon glyphicon-ok form-control-feedback"></span>
+        <span ng-show="!Form.emailAddress.$valid" class="glyphicon glyphicon-remove  form-control-feedback"></span>
+    </div>

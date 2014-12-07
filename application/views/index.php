@@ -2,16 +2,18 @@
 <html>
   <head>
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">   
+   <meta http-equiv="content-script-type" content="text/javascript">   
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/vendor/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/vendor/css/bootstrap-theme.min.css">
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/vendor/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/vendor/css/bootstrap-theme.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/viewAnim.css" type="text/css">
+
     <title>La Boutique en ligne</title>
     <style type="text/css">
        body {
               padding-top: 50px;
-              /*background-image: url('assets/images/website-background.jpg');*/
+              
             }
      
               footer {
@@ -60,7 +62,6 @@
                 }
                 .pagination ul li{
                   display: inline-block;
-                  padding: 1%;
                 }
                 h3
                 {
@@ -99,38 +100,7 @@
                 }
                 img{width:100%;}
 
-                .sort-true {
-                      padding-right: 14px;
-                      background: no-repeat right center url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAICAYAAAAvOAWIAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAAX0lEQVQoU32NQQrAMAgEBa+CvfX5PYa+pn/oR2w2xLIQibAgOqMSEYe73wh6oVp2Ztb6PhAWEszd5OTJAQknRJ73Hpz4bMZ1RFXfAgQ3ahEIxsUf3AklWAlbkIWrev0BT3ZAxrSn1UcAAAAASUVORK5CYII=')
-                      /*../Icons/Icon-down-white.png*/
-                  ;
-
-                      /* For IE 6 and 7 */
-                  }
-                  .sort-false {
-                      padding-right: 14px;
-                      background: no-repeat right center url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAICAYAAAAvOAWIAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAAXklEQVQoU2NgwAT8QKH5QAyi8QKQgvNA/B9K49SArBCkGKcGbAqxasBQyMzM/AhqMoYGmBvBEvz8/Cv///8vDqIxNPDw8CyHCUIVCoCCAKhBAFkDWB1MEFkhLLzQ5QBl6UDG/jPuNgAAAABJRU5ErkJggg==')
-                      /*../Icons/Icon-up-white.png*/
-                  ;
-
-                      /* For IE 6 and 7 */
-                  }
-                  .NoData td.NoData {
-                      text-align: center;
-                  }
-                  .even {
-                      background-color: #aaa
-                  }
-                  .odd {
-                      background-color: #fff;
-                  }
-                  .icon {
-                      max-height: 20px;
-                      max-width: 20px;
-                  }
-                  .SelectedRow {
-                      background-color: #888;
-                  }
+                  
     </style>
   </head>
   <body ng-app="eCommerce">
@@ -153,7 +123,7 @@
                                         Others...<b class="caret"></b>
                                       </a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Functionality 1</a></li>
+                      <li><a href="#/formvalid">Functionality 1</a></li>
                       <li><a href="#">Functionality 2</a></li>
                       <li><a href="#">Functionality 3</a></li>
                       <li class="divider"></li>
@@ -174,9 +144,10 @@
            <div class="row">
                 <section class="col-sm-12">
                   <div class="row">
-                    <div class="col-sm-9 view-animate-container">
+                    <div class="col-sm-9">
                       
-                      <div class="row" id="display" ng-view class="view-animate">
+                      <!--div class="row page {{ pageClass }}" id="display" ng-view-->
+                      <div class="row" id="display" ng-view>
                         
                       </div>
                     </div>
@@ -236,19 +207,19 @@
               </div>
           </footer>
     </div>
-     <script src="/vendor/js/jquery-2.1.1.min.js"></script> 
-     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>    
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-animate.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.min.js"></script>  
-    <script src="/vendor/js/bootstrap.min.js"></script>
-    <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>    
-    <script src="assets/js/app.js"></script>      
-    <script src="assets/js/models/servicePagination.js"></script>      
-    <script src="assets/js/models/serviceUser.js"></script>      
-    <script src="assets/js/models/serviceProduct.js"></script>      
-    <script src="assets/js/controllers/userCtrl.js"></script>      
-    <script src="assets/js/controllers/productCtrl.js"></script>      
-    <script src="assets/js/controllers/essai.js"></script>      
+    <script type="text/javascript" src="/vendor/js/jquery-2.1.1.min.js"></script> 
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-animate.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js"></script>  
+    <script type="text/javascript" src="/vendor/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>    
+    <script type="text/javascript" src="assets/js/app.js"></script>      
+    <script type="text/javascript" src="assets/js/models/servicePagination.js"></script>      
+    <script type="text/javascript" src="assets/js/models/serviceUser.js"></script>      
+    <script type="text/javascript" src="assets/js/models/serviceProduct.js"></script>      
+    <script type="text/javascript" src="assets/js/controllers/userCtrl.js"></script>      
+    <script type="text/javascript" src="assets/js/controllers/productCtrl.js"></script>      
+    <script type="text/javascript" src="assets/js/controllers/essai.js"></script>      
     
     
   </body>

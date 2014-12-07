@@ -1,5 +1,3 @@
-<div ng-controller="UsersCtrl">
-
   <small>
     <form role="form"  class="well form-horizontal col-xs-9" ng-submit="register()">
             <p class="msgError"> </p>
@@ -51,4 +49,4 @@
   
     </form>
   </small>
-</div>
+
