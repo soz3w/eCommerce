@@ -10,9 +10,17 @@ class Controller_Product extends Controller {
 		$view->name="Parametre";
 		$this->response->body($view);
 	}
+	public function action_getSessionId()
+	{
+		session_start();
+		$sessionId = session_id();
+		header('Content-type: application/json');
+		echo '{"sessionId":"'.$sessionId.'"}';
+	}
 	
 	public function action_getProductsCount()
 	{
+		session_start();
 		$prodModel = new Model_Product();
 		$prodCount = $prodModel->getRowsCount();
 		header('Content-type: application/json');
@@ -20,6 +28,7 @@ class Controller_Product extends Controller {
 	}
 	public function action_getProducts()
 	{
+		session_start();
 		//output results from database
 
 		$prodModel = new Model_Product();

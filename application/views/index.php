@@ -98,7 +98,51 @@
                 .image{
                   width:70px;
                 }
-                img{width:100%;}
+                img{
+                  width:100%;
+                }
+                #cartList .list-group-item{
+                  padding: 2px;
+                  border:0px;
+                }
+
+                .slide-animate-container {
+                  position:relative;              
+                  overflow:hidden;
+                }
+
+                .slide-animate {
+                  padding:10px;
+                }
+
+                .slide-animate.ng-enter, .slide-animate.ng-leave {
+                  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+                  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+
+                  position:absolute;
+                  top:0;
+                  left:0;
+                  right:0;
+                  bottom:0;
+                  display:block;
+                  padding:10px;
+                }
+
+                .slide-animate.ng-enter {
+                  top:-50px;
+                }
+                .slide-animate.ng-enter.ng-enter-active {
+                  top:0;
+                }
+
+                .slide-animate.ng-leave {
+                  top:0;
+                }
+                .slide-animate.ng-leave.ng-leave-active {
+                  top:50px;
+                }
+
+               
 
                   
     </style>
@@ -133,8 +177,8 @@
               </ul>
               <form class="navbar-form navbar-right inline-form">
                 <div class="form-group">
-                  <input type="search" class="input-xs form-control" placeholder="Recherche" ng-model="query">
-                  <button class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-eye-open"></span> Chercher</button>
+                  <input type="search" class="input-xs form-control" ng-model="query">
+                  <button class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-eye-open"></span> search</button>
                 </div>
               </form>
             </div>
@@ -144,10 +188,10 @@
            <div class="row">
                 <section class="col-sm-12">
                   <div class="row">
-                    <div class="col-sm-9">
+                    <div class="col-sm-9 slide-animate-container">
                       
                       <!--div class="row page {{ pageClass }}" id="display" ng-view-->
-                      <div class="row" id="display" ng-view>
+                      <div class="row slide-animate" id="display" ng-view>
                         
                       </div>
                     </div>
@@ -157,32 +201,29 @@
                               <div class="panel panel-success">
                                                                     
                                   <div class="panel-heading">
-                                    <a href="#item2"  data-parent="#myCollapse" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-folder-open"></span> Categories</a>
+                                    <a href="#cartList"  data-parent="#myCollapse" class="panel-title" 
+                                    data-toggle="collapse"><span class="glyphicon glyphicon-shopping-cart"></span>
+                                      Shopping cart</a>
                                   </div>
-                                  <div id="item2" class="panel-collapse collapse in">
+                                  <div id="cartList" class="panel-collapse collapse in">
                                     <div class="panel-body">
                                       <ul class="list-group">
-                                          <li class="list-group-item"><a href="">categorie1</a></li>
-                                          <li class="list-group-item"><a href="">categorie2</a></li>
-                                          <li class="list-group-item"><a href="">categorie3</a></li>
-                                          <li class="list-group-item"><a href="">Categorie4</a></li>
-                                          <li class="list-group-item"><a href="">Categorie5</a></li>
+                                        <small><li class="list-group-item"><a href="#">Empty</a></li></small>
+                                          
                                       </ul>
                                      </div>
                                   </div>
                               
                                
                                   <div class="panel-heading">
-                                    <a href="#item3" data-parent="#myCollapse" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-bookmark"></span> Tags</a>
+                                    <a href="#catList" data-parent="#myCollapse" class="panel-title" data-toggle="collapse">
+                                      <span class="glyphicon glyphicon-tasks"></span> Products categories</a>
                                   </div>
-                                  <div id="item3" class="panel-collapse collapse in">
+                                  <div id="catList" class="panel-collapse collapse in">
                                     <div class="panel-body">
                                       <ul class="list-group">
-                                          <li class="list-group-item"><a href="">Tag1</a></li>
-                                          <li class="list-group-item"><a href="">Tag2</a></li>
-                                          <li class="list-group-item"><a href="">Tag3</a></li>
-                                          <li class="list-group-item"><a href="">Tag4</a></li>
-                                          <li class="list-group-item"><a href="">Tag5</a></li>
+                                          <li class="list-group-item"><a href="#">Cat1</a></li>
+                                          <li class="list-group-item"><a href="#">Cat2</a></li>
                                       </ul>
                                     </div>
                                   </div>

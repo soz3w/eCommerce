@@ -8,6 +8,7 @@ app.factory('ProductFactory',function($http,$q){
 				totalRows:0,
 				item_per_page:5,
 				page_number:0,
+				SessionID:null,
 				getProducts:function(){
 					
 					var postData = 'myData={"page":'+factory.page+',"item_per_page":'+factory.item_per_page+'}';
@@ -31,8 +32,17 @@ app.factory('ProductFactory',function($http,$q){
 								})
 							return deffered.promise;
 						},
-				getProduct:function(id){
-					//faire pareil avec les promesses
+				getSessionId:function(){
+					var deffered = $q.defer();
+					$http.get('product/getSessionId')
+								.success(function(data,status){
+									factory.SessionID=data.sessionId;
+									deffered.resolve(factory.SessionID);
+								})
+								.error(function(data,status){
+									deffered.reject('Impossible de récupérer la session ID');
+								})
+					return deffered.promise;
 				},
 				getProductsCount:function(){
 					var deffered = $q.defer();

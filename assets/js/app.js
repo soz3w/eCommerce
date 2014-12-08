@@ -1,3 +1,4 @@
+const STORAGE_KEY="CartContent"
 var app=angular.module('eCommerce',['ngAnimate','ngRoute']);
 
 //ngRoutes externalisé, à aller chercher dans les extras
@@ -22,6 +23,25 @@ app.config(function($routeProvider){
 
 });
 
+ app.directive("ngEquals", function() {
+ 	return {
+		    restrict: 'A',
+		    require : 'ngModel',
+		    scope: {
+		      		original: '=ngEquals'
+		    	},
+		    link: function(scope, elm, attrs, ngModel) {
+
+	    			ngModel.$parsers.unshift(function(value) {
+			    		ngModel.$setValidity('equals', scope.original === value);
+			    		return value;
+				    });
+				}
+
+ 		}
+ 	});
+
+
  app.directive("customSort2", function() {
 	return {
 	    restrict: 'A',
@@ -29,7 +49,7 @@ app.config(function($routeProvider){
 	    scope: {
 	      order: '=',
 	      sort: '='
-	    },
+	    		},
 	    template : 
 	      ' <a ng-click="sort_by(order)" style="color: #555555;">'+
 	      '    <span ng-transclude></span>'+

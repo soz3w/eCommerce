@@ -1,9 +1,11 @@
 
 app.controller('ProductsCtrl',function($scope,$rootScope,$q,ProductFactory,Paginer){
 			//console.log(document.images);
+			
 			$scope.pageClass = 'page-home';
 			$scope.loading=true;
 			ProductFactory.page=1;
+			$scope.page=ProductFactory.page;
 			ProductFactory.item_per_page=5;
 			$scope.getProducts=function(){
 
@@ -37,8 +39,30 @@ app.controller('ProductsCtrl',function($scope,$rootScope,$q,ProductFactory,Pagin
     		};
     		$scope.getPage=function(page){
     			ProductFactory.page=page;
+    			$scope.page=ProductFactory.page;
     			$scope.getProducts();
     		};
+    		
+    		$scope.sessionID=ProductFactory.getSessionId().then(function(sesID){
+				$scope.sessionID=sesID;
+				
+			},function(msg){
+				alert(msg);
+			});
+    		
+    		$scope.cart=[];
+    		$scope.addToCart= function(id){
+    			
+    			for (var p in $scope.products) {
+  						if ($scope.products[p].id==id)
+  						{
+  							$scope.cart.push(JSON.stringify($scope.products[p]));
+  							//console.log($scope.cart);
+  						}
+
+					}
+    			//window.localStorage.setItem(key, value);
+    		}
 
 
 
