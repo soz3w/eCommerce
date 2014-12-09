@@ -19,9 +19,7 @@
               footer {
                 border: 0;
               }
-              article.col-sm-6, nav.col-sm-2 {
-                
-              }
+              
               .msgError{
                 color : red;
               }
@@ -48,8 +46,9 @@
                   text-justify: inter-word;
                 } 
                 .panel-body img{
-                  width:100%;
-                  margin-bottom: 2px;
+                   width: 92px;
+                  height: 92px;    
+                  background-image: url(http://www.placehold.it/92x92);                  
                 }
                 .panel-footer{
                   font-size: 1em;
@@ -57,12 +56,7 @@
                 .form-group{
                    padding-bottom: 10px;
                 }
-                .pagination ul{
-                 list-style-type: none;
-                }
-                .pagination ul li{
-                  display: inline-block;
-                }
+                
                 h3
                 {
                   text-align: center;
@@ -95,12 +89,9 @@
                 td,th{
                   text-align: center;
                 }
-                .image{
-                  width:70px;
-                }
-                img{
-                  width:100%;
-                }
+               
+                
+                
                 #cartList .list-group-item{
                   padding: 2px;
                   border:0px;
@@ -141,7 +132,35 @@
                 .slide-animate.ng-leave.ng-leave-active {
                   top:50px;
                 }
+                
+                ul{
+                  list-style-type: none;
+                }
+                .pagination{
+                  display:block;
+                }
 
+                .pagination ul li{
+                  display: inline-block;
+                }
+                .list-group-item ul{
+                  padding-left: 0px;
+                }
+                .list-group-item ul li{
+                  display:inline-block; 
+                  padding:5px;                
+                }
+                .label-default:first-child{
+                  margin-right :15%;
+                  width:30%;
+                }
+                .label-default:nth-child(1000n+2){
+                  margin-right :5%;
+                  margin-left :5%;
+                  width:40%;
+                }
+                
+               
                
 
                   
@@ -151,7 +170,7 @@
     <div class="container">
       <header class="row">
         <div class="col-sm-12 col-lg-12">
-          <h2 class="titreSite">Bienvenue sur la boutique en ligne</h2>
+          <h2 class="titreSite">Welcome to the online shop</h2>
         </div>
       </header>
      
@@ -196,34 +215,49 @@
                       </div>
                     </div>
                     <div class="col-sm-3">
-                      <div class="row">
-                        <aside class="col-sm-12" id="myCollapse">
-                              <div class="panel panel-success">
+                      <div class="row">                        
+                        <aside class="col-sm-12" id="myCollapse" ng-controller="CartCtrl">
+                              <div class="panel panel-success" >
                                                                     
-                                  <div class="panel-heading">
+                                  <div class="panel-heading" ng-show="cart">
                                     <a href="#cartList"  data-parent="#myCollapse" class="panel-title" 
                                     data-toggle="collapse"><span class="glyphicon glyphicon-shopping-cart"></span>
                                       Shopping cart</a>
                                   </div>
-                                  <div id="cartList" class="panel-collapse collapse in">
-                                    <div class="panel-body">
+                                  <div id="cartList" class="panel-collapse collapse in" ng-show="cart">
+                                    <div class="panel-body" >
                                       <ul class="list-group">
-                                        <small><li class="list-group-item"><a href="#">Empty</a></li></small>
+                                        <small>
+                                          <li>
+                                            <span class="label label-default">Product</span>
+                                            <span class="label label-default">Price</span>
+                                            <span class="label label-default">Quantity</span>
+                                          </li>
+                                          <li ng-repeat="lnCart in cart track by $index" class="list-group-item">
+                                             <ul>
+                                               <li><a> {{lnCart.ProductName}}</a></li>
+                                               <li>{{lnCart.ProductPrice}} €</li>
+                                               <li>{{lnCart.quantity}}</li>
+                                             </ul>
+                                          </li>
+                                          <li class="pull-right">Total : {{total}} €</li>                                          
+                                         </small>
                                           
                                       </ul>
+                                      <p><a class="btn btn-success btn-xs" ng-click="order()">Order</a></p>
                                      </div>
                                   </div>
                               
                                
                                   <div class="panel-heading">
-                                    <a href="#catList" data-parent="#myCollapse" class="panel-title" data-toggle="collapse">
+                                    <a  data-parent="#myCollapse" class="panel-title" data-toggle="collapse">
                                       <span class="glyphicon glyphicon-tasks"></span> Products categories</a>
                                   </div>
                                   <div id="catList" class="panel-collapse collapse in">
                                     <div class="panel-body">
                                       <ul class="list-group">
-                                          <li class="list-group-item"><a href="#">Cat1</a></li>
-                                          <li class="list-group-item"><a href="#">Cat2</a></li>
+                                          <li class="list-group-item"><a >Cat1</a></li>
+                                          <li class="list-group-item"><a >Cat2</a></li>
                                       </ul>
                                     </div>
                                   </div>
@@ -260,6 +294,7 @@
     <script type="text/javascript" src="assets/js/models/serviceProduct.js"></script>      
     <script type="text/javascript" src="assets/js/controllers/userCtrl.js"></script>      
     <script type="text/javascript" src="assets/js/controllers/productCtrl.js"></script>      
+    <script type="text/javascript" src="assets/js/controllers/cartCtrl.js"></script>      
     <script type="text/javascript" src="assets/js/controllers/essai.js"></script>      
     
     

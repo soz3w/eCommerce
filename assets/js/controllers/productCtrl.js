@@ -1,16 +1,17 @@
 
-app.controller('ProductsCtrl',function($scope,$rootScope,$q,ProductFactory,Paginer){
+app.controller('ProductsCtrl',function($scope,$rootScope,$q,ProductFactory){
 			//console.log(document.images);
 			
 			$scope.pageClass = 'page-home';
 			$scope.loading=true;
 			ProductFactory.page=1;
 			$scope.page=ProductFactory.page;
-			ProductFactory.item_per_page=5;
+			ProductFactory.item_per_page=12;
 			$scope.getProducts=function(){
 
 				$scope.products=ProductFactory.getProducts().then(function(products){
 				$scope.products=products;
+				
 				$scope.loading=false;
 				
 				},function(msg){
@@ -43,26 +44,31 @@ app.controller('ProductsCtrl',function($scope,$rootScope,$q,ProductFactory,Pagin
     			$scope.getProducts();
     		};
     		
-    		$scope.sessionID=ProductFactory.getSessionId().then(function(sesID){
-				$scope.sessionID=sesID;
-				
-			},function(msg){
-				alert(msg);
-			});
-    		
     		$scope.cart=[];
+    		
     		$scope.addToCart= function(id){
     			
     			for (var p in $scope.products) {
   						if ($scope.products[p].id==id)
   						{
-  							$scope.cart.push(JSON.stringify($scope.products[p]));
+  							$scope.cart.push($scope.products[p]);
   							//console.log($scope.cart);
   						}
 
 					}
     			//window.localStorage.setItem(key, value);
-    		}
+    			
+
+    			ProductFactory.prepForBroadcast($scope.cart);
+    			$scope.$on('handleAddToCart',function(){
+    			$scope.cart=ProductFactory.cart;
+    		});
+    			
+    		};
+
+
+    		
+
 
 
 

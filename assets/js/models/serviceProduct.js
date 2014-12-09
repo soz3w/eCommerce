@@ -1,4 +1,4 @@
-app.factory('ProductFactory',function($http,$q){
+app.factory('ProductFactory',function($http,$q,$rootScope){
 			
 			var factory ={
 				//false comme cache, on met les produits dans unfichier json exterieur
@@ -6,9 +6,10 @@ app.factory('ProductFactory',function($http,$q){
 				page:1,
 				products:false,
 				totalRows:0,
-				item_per_page:5,
+				item_per_page:12,
 				page_number:0,
 				SessionID:null,
+				cart:null,
 				getProducts:function(){
 					
 					var postData = 'myData={"page":'+factory.page+',"item_per_page":'+factory.item_per_page+'}';
@@ -55,6 +56,13 @@ app.factory('ProductFactory',function($http,$q){
 									deffered.reject('Impossible de compter les produits');
 								})
 					return deffered.promise;
+				},
+				prepForBroadcast:function(cart){
+						this.cart=cart;
+						this.broadcastCart();
+				},
+				broadcastCart:function(){
+						$rootScope.$broadcast('handleAddToCart');
 				}
 				
 			}
