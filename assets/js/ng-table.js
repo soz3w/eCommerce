@@ -27,7 +27,7 @@
  <doc:source>
  <script>
  var app = angular.module('myApp', ['ngTable']);
- app.controller('MyCtrl', function($scope) {
+ app.controller('MyController', function($scope) {
                     $scope.users = [
                         {name: "Moroni", age: 50},
                         {name: "Tiancum", age: 43},

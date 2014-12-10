@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta http-equiv="content-script-type" content="text/javascript">   
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -177,7 +178,7 @@
       
            <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
-              <ul class="nav navbar-nav" ng-controller="MenuManage">
+              <ul class="nav navbar-nav" ng-controller="MenuManageController">
                 <li ng-class="{ active: isActive('/products')}"> <a class ="accueil" href="#/products">Home</a> </li>
                 <li ng-class="{ active: isActive('/login')}"> <a class ="login" href="#/login">Log in</a> </li>
                 <li ng-class="{ active: isActive('/register')}"> <a class ="register" href="#/register" >Register</a> </li>
@@ -216,7 +217,7 @@
                     </div>
                     <div class="col-sm-3">
                       <div class="row">                        
-                        <aside class="col-sm-12" id="myCollapse" ng-controller="CartCtrl">
+                        <aside class="col-sm-12" id="myCollapse" ng-controller="CartController">
                               <div class="panel panel-success" >
                                                                     
                                   <div class="panel-heading" ng-show="cart">
@@ -244,7 +245,7 @@
                                          </small>
                                           
                                       </ul>
-                                      <p><a class="btn btn-success btn-xs" ng-click="order()">Order</a></p>
+                                      <p><a class="btn btn-success btn-xs" ng-click="checkOut()">Check Out</a></p>
                                      </div>
                                   </div>
                               

@@ -5,17 +5,20 @@ var app=angular.module('eCommerce',['ngAnimate','ngRoute']);
 app.config(function($routeProvider){
 	$routeProvider
 		//.when('/',{templateUrl:'assets/js/views/products.html'})
-		.when('/',{templateUrl:'product/index',controller: 'ProductsCtrl'})
-		.when('/products',{templateUrl:'product/index',controller: 'ProductsCtrl'})
-		.when('/register',{templateUrl:'user/register',controller: 'UsersCtrl'})
-		.when('/login',{templateUrl:'user/login',controller: 'UsersCtrl'})		
-		.when('/essai',{templateUrl:'assets/js/views/essai.html',controller: 'ContactCtrl'})
-		.when('/formvalid',{templateUrl:'assets/js/views/formvalid.html',controller: 'ContactCtrl'})
-		.otherwise({redirectTo: "/"})
+		.when('/',{templateUrl:'product/index',controller: 'ProductsController'})
+		.when('/products',{templateUrl:'product/index',controller: 'ProductsController'})
+		.when('/register',{templateUrl:'user/register',controller: 'UsersController'})
+		.when('/login',{templateUrl:'user/login',controller: 'UsersController'})		
+		.when('/essai',{templateUrl:'assets/js/views/essai.html',controller: 'ContactController'})
+		.when('/formvalid',{templateUrl:'assets/js/views/formvalid.html',controller: 'ContactController'})
+		.otherwise({redirectTo: "/"});
+
+		// use the HTML5 History API
+		//$locationProvider.html5Mode(true);
 
 });
 
- app.controller('MenuManage',function($scope,$location){
+ app.controller('MenuManageController',function($scope,$location){
 	
 	$scope.isActive = function (viewLocation) { 
 		  return viewLocation === $location.path();
@@ -85,10 +88,10 @@ app.config(function($routeProvider){
 }); //end directive
 
 
-app.controller('AboutCtrl',function($scope){
+app.controller('AboutController',function($scope){
 	$scope.pageClass = 'page-about';
 });
-app.controller('ContactCtrl',function($scope){
+app.controller('ContactController',function($scope){
 	$scope.pageClass = 'page-contact';
 
 	$scope.fName = '';
