@@ -60,9 +60,10 @@ app.controller('ProductsController',function($scope,$rootScope,$q,ProductFactory
 		
 
 		ProductFactory.prepForBroadcast($scope.cart);
+		
 		$scope.$on('handleAddToCart',function(){
-		$scope.cart=ProductFactory.cart;
-	});
+					$scope.cart=ProductFactory.cart;
+			});
 		
 	};
 

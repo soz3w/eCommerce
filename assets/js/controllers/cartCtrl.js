@@ -1,5 +1,5 @@
 
-app.controller('CartController',function($scope,$rootScope,$q,ProductFactory){
+app.controller('CartController',function($scope,$rootScope,$q,ProductFactory,$location){
 $scope.sessionID=ProductFactory.getSessionId().then(function(sesID){
 		$scope.sessionID=sesID;
 		
@@ -7,12 +7,14 @@ $scope.sessionID=ProductFactory.getSessionId().then(function(sesID){
 		alert(msg);
 	});
 	
-	ProductFactory.prepForBroadcast($scope.cartJson);
+	
+	
 	$scope.$on('handleAddToCart',function(){
 		$scope.cart=ProductFactory.cart;
+		var scopeGroupby = new Array();
 		$scope.total=0; 
 		var i=0;
-		var scopeGroupby = new Array();
+		
 		for (c in $scope.cart) {    				
 			$scope.total+= parseFloat($scope.cart[c].ProductPrice);
 			$scope.total=Math.round($scope.total*100)/100;
@@ -40,11 +42,15 @@ $scope.sessionID=ProductFactory.getSessionId().then(function(sesID){
 		}
 		scopeGroupby.total=$scope.total;
 		$scope.cart=scopeGroupby;
+		//console.log($scope.cart);
 	});
 
     $scope.checkOut= function(){
-    
+    	   	
+    	ProductFactory.prepForBroadcastCheck($scope.cart);
        window.localStorage.setItem(STORAGE_KEY, JSON.stringify($scope.cart)); 
+       $scope.cart=null;
+       $location.path("/cart");
     };
 
 

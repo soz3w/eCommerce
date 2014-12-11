@@ -296,6 +296,7 @@
     <script type="text/javascript" src="assets/js/controllers/userCtrl.js"></script>      
     <script type="text/javascript" src="assets/js/controllers/productCtrl.js"></script>      
     <script type="text/javascript" src="assets/js/controllers/cartCtrl.js"></script>      
+    <script type="text/javascript" src="assets/js/controllers/orderCtrl.js"></script>      
     <script type="text/javascript" src="assets/js/controllers/essai.js"></script>      
     
     

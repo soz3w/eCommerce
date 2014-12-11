@@ -62,7 +62,14 @@ app.factory('ProductFactory',function($http,$q,$rootScope){
 						this.broadcastCart();
 				},
 				broadcastCart:function(){
-						$rootScope.$broadcast('handleAddToCart');
+						$rootScope.$broadcast('handleAddToCart');						
+				},
+				prepForBroadcastCheck:function(cart){
+						this.cart=cart;
+						this.broadcastCartCheck();
+				},
+				broadcastCartCheck:function(){						
+						$rootScope.$broadcast('handleCheckOutCart');
 				}
 				
 			}
