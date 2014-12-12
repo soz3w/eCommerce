@@ -10,12 +10,12 @@ class Controller_Order extends Controller {
 		//$view->name="Parametre"; bind d'une valeur pour la vue, $name dans la vue
 		$this->response->body($view);
 	}
-	public function action_getSessionId()
+	public function action_getSession()
 	{
 		session_start();
-		$sessionId = session_id();
+		$session = json_encode($_SESSION);
 		header('Content-type: application/json');
-		echo '{"sessionId":"'.$sessionId.'"}';
+		echo $session ;
 	}
 	
 	public function action_getOrdersCount()

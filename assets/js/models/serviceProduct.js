@@ -8,7 +8,7 @@ app.factory('ProductFactory',function($http,$q,$rootScope){
 				totalRows:0,
 				item_per_page:12,
 				page_number:0,
-				SessionID:null,
+				session:null,
 				cart:null,
 				getProducts:function(){
 					
@@ -33,12 +33,12 @@ app.factory('ProductFactory',function($http,$q,$rootScope){
 								})
 							return deffered.promise;
 						},
-				getSessionId:function(){
+				getSession:function(){
 					var deffered = $q.defer();
-					$http.get('product/getSessionId')
+					$http.get('product/getSession')
 								.success(function(data,status){
-									factory.SessionID=data.sessionId;
-									deffered.resolve(factory.SessionID);
+									factory.session=data;
+									deffered.resolve(factory.session);
 								})
 								.error(function(data,status){
 									deffered.reject('Impossible de récupérer la session ID');

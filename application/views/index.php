@@ -91,7 +91,7 @@
                   text-align: center;
                 }
                 td .input-sm{
-                    width :20%;
+                    width :50%;
                     background-color: #3e8f3e;
                     color:white;
                 }  

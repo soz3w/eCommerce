@@ -10,12 +10,13 @@ class Controller_Product extends Controller {
 		$view->name="Parametre";
 		$this->response->body($view);
 	}
-	public function action_getSessionId()
+	public function action_getSession()
 	{
 		session_start();
-		$sessionId = session_id();
+		$_SESSION["email"]="aa@bb.fr";
+		$session = json_encode($_SESSION);
 		header('Content-type: application/json');
-		echo '{"sessionId":"'.$sessionId.'"}';
+		echo $session ;
 	}
 	
 	public function action_getProductsCount()

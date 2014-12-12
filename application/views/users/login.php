@@ -12,14 +12,14 @@
 
 ?>
 
-<h4> <?php if (isset($msg)) echo $msg;  ?></h4>
+<h4></h4>
 
-<form role="form" method="post" class="form-horizontal col-xs-7" action ="login.php">
+<form role="form" class="form-horizontal col-xs-7">
  <p class="warning" id="MessageError"></p>
     <div class="form-group has-error has-feedback" >
-      <label for="idLogin" class="col-xs-3 control-label">login</label>
+      <label for="idLogin" class="col-xs-3 control-label">Email</label>
       <div class="col-xs-3">
-        <input class="form-control input-sm" type="text" name="username" id="idLogin" value="">
+        <input class="form-control input-sm" type="email" name="email" ng-model="user.email">
       </div>
       <div class="col-xs-offset-6"></div>
     </div>
@@ -27,14 +27,14 @@
     <div class="form-group">
       <label for="idPassword" class="col-xs-3 control-label">Password</label>
       <div class="col-xs-3">
-        <input class="form-control input-sm" type="password" name="password" id="idPassword" value="">
+        <input class="form-control input-sm" type="password" name="password" ng-model="user.password">
       </div>
       <div class="col-xs-offset-6"></div>
     </div>
   
     <div class="form-group">        
         <div class="col-xs-9 col-xs-offset-3">
-          <button  class="btn btn-primary btn-sm btnLogin">Login</button>        
+          <button  class="btn btn-primary btn-sm btnLogin" ng-click="logUser()">login</button>        
         </div>
     </div>
     <div class="row alert alert-block alert-danger" style="display:none">

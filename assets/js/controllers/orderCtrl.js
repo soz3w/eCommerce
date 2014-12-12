@@ -2,6 +2,7 @@
 app.controller('OrderController',function($scope,$rootScope,$q,ProductFactory,$location){
 
 	//console.log(ProductFactory.cart);
+	//$(".subtotal").each(function(){this}) jquery interessant
 	
 		$scope.cart=ProductFactory.cart;
 		$scope.total=0; 		
@@ -9,14 +10,7 @@ app.controller('OrderController',function($scope,$rootScope,$q,ProductFactory,$l
 			$scope.cart[c].total= parseFloat($scope.cart[c].ProductPrice)*parseFloat($scope.cart[c].quantity);
 			$scope.total+=Math.round($scope.cart[c].total*100)/100;
 		}
-		
 	
-
-    $scope.order= function(){
-    	ProductFactory.prepForBroadcastCheck($scope.cart);
-       	window.localStorage.setItem(STORAGE_KEY, JSON.stringify($scope.cart)); 
-       $location.path("/order");
-    };
     $scope.update=function(){
     	$scope.cart.total=0;
 		for (var c = 0; c < $scope.cart.length; c++) {			
@@ -38,6 +32,24 @@ app.controller('OrderController',function($scope,$rootScope,$q,ProductFactory,$l
 				}
 					
 			}
+    };
+
+    $scope.session=ProductFactory.getSession().then(function(ses){
+		$scope.session=ses;		
+		
+	},function(msg){
+		alert(msg);
+	});
+	
+
+    $scope.order= function(){
+    	ProductFactory.prepForBroadcastCheck($scope.cart);
+       	window.localStorage.setItem(STORAGE_KEY, JSON.stringify($scope.cart)); 
+        if ($scope.session.email!='')
+       		 $location.path("/payment");
+       	else
+       		 $location.path("/login");	
+    
     };
 
 

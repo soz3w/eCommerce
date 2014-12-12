@@ -1,13 +1,6 @@
 
 app.controller('CartController',function($scope,$rootScope,$q,ProductFactory,$location){
-$scope.sessionID=ProductFactory.getSessionId().then(function(sesID){
-		$scope.sessionID=sesID;
-		
-	},function(msg){
-		alert(msg);
-	});
-	
-	
+
 	
 	$scope.$on('handleAddToCart',function(){
 		$scope.cart=ProductFactory.cart;
