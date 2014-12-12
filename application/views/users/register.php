@@ -1,5 +1,5 @@
   <small>
-    <form name= "form"  class="well form-horizontal col-xs-9" ng-submit="register()">
+    <form name= "form"  class="form-horizontal col-xs-9" ng-submit="register()">
       <p class="msgError"> </p>
       <div class="form-group" ng-class="{'has-error': form.UserFirstName.$dirty && form.UserFirstName.$invalid}">
         <label for="UserFirstName" class="col-xs-3 control-label">First Name</label>
@@ -68,7 +68,8 @@
       <div class="form-group">
 
           <div class="col-xs-offset-8 col-xs-4">
-            <button type="submit" ng-disabled="error || incomplete" class="btn btn-primary btn-sm btnLogin">Créer mon compte</button>        
+            <button type="submit" ng-disabled="error || incomplete" class="btn btn-primary btn-sm btnLogin">
+              Register</button>        
         </div>
         
         <div class="row alert alert-block alert-danger" style="display:none">

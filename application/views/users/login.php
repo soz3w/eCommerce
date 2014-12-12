@@ -14,7 +14,7 @@
 
 <h4> <?php if (isset($msg)) echo $msg;  ?></h4>
 
-<form role="form" method="post" class="well form-horizontal col-xs-7" action ="login.php">
+<form role="form" method="post" class="form-horizontal col-xs-7" action ="login.php">
  <p class="warning" id="MessageError"></p>
     <div class="form-group has-error has-feedback" >
       <label for="idLogin" class="col-xs-3 control-label">login</label>
@@ -44,6 +44,6 @@
     </div>
       
     
-  <p><a href="#/register">Créer un compte</a></p>
+  <p><a href="#/register">Register</a></p>
 </form>
 

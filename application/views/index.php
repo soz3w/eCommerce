@@ -90,7 +90,11 @@
                 td,th{
                   text-align: center;
                 }
-               
+                td .input-sm{
+                    width :20%;
+                    background-color: #3e8f3e;
+                    color:white;
+                }  
                 
                 
                 #cartList .list-group-item{
@@ -218,7 +222,7 @@
                     <div class="col-sm-3">
                       <div class="row">                        
                         <aside class="col-sm-12" id="myCollapse" ng-controller="CartController">
-                              <div class="panel panel-success" >
+                              <div class="panel panel-success" ng-show="cart">
                                                                     
                                   <div class="panel-heading" ng-show="cart">
                                     <a href="#cartList"  data-parent="#myCollapse" class="panel-title" 
@@ -250,11 +254,11 @@
                                   </div>
                               
                                
-                                  <div class="panel-heading">
+                                  <div class="panel-heading" ng-show="categories">
                                     <a  data-parent="#myCollapse" class="panel-title" data-toggle="collapse">
                                       <span class="glyphicon glyphicon-tasks"></span> Products categories</a>
                                   </div>
-                                  <div id="catList" class="panel-collapse collapse in">
+                                  <div id="catList" class="panel-collapse collapse in" ng-show="categories">
                                     <div class="panel-body">
                                       <ul class="list-group">
                                           <li class="list-group-item"><a >Cat1</a></li>

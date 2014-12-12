@@ -16,13 +16,15 @@
             <td>{{c.ProductSKU}}</td>
             <td>{{c.ProductName}}</td>
             <td>{{c.ProductPrice}}</td> 
-            <td><span ng-show="!edit">{{c.quantity}}</span><input ng-show="edit" type="text" ng-model="c.quantity"></td>
+            <td><span ng-show="!edit">{{c.quantity}}</span>
+                <input class="input-sm" min="1" max="1000" ng-show="edit" type="number" ng-model="c.quantity">
+            </td>
             <td>{{c.total}}</td>            
             <td>
                 <button class="btn btn-xs btn-warning" ng-show="!edit" ng-click="edit=true">Edit quantity</button>
                 <button class="btn btn-xs btn-success" ng-show="edit" 
                      ng-click="update();edit=false">update</button>
-                <a ng-click="delete()">
+                <a ng-click="delete(c.id)">
                     <i class="glyphicon glyphicon-trash"></i>
                 </a>
             </td>            
@@ -35,6 +37,14 @@
             <td>Total:</td>
             <td>{{cart.total}}</td>
             <td></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td></td>
+            <td></td>            
+            <td></td>
+            <td></td>
+            <td><button class="btn btn-sm btn-primary" ng-show="cart" ng-click="order()">Order</button></td>
         </tr>
         
     </table>

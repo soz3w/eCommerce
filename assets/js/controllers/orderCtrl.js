@@ -12,13 +12,13 @@ app.controller('OrderController',function($scope,$rootScope,$q,ProductFactory,$l
 		
 	
 
-    $scope.Order= function(){
+    $scope.order= function(){
     	ProductFactory.prepForBroadcastCheck($scope.cart);
-       //window.localStorage.setItem(STORAGE_KEY, JSON.stringify($scope.cart)); 
+       	window.localStorage.setItem(STORAGE_KEY, JSON.stringify($scope.cart)); 
        $location.path("/order");
     };
     $scope.update=function(){
-    	
+    	$scope.cart.total=0;
 		for (var c = 0; c < $scope.cart.length; c++) {			
     		$scope.cart[c].total=$scope.cart[c].ProductPrice*$scope.cart[c].quantity;
     		$scope.cart.total+=$scope.cart[c].total;
@@ -27,8 +27,17 @@ app.controller('OrderController',function($scope,$rootScope,$q,ProductFactory,$l
     	$scope.edit=false;    	
     };
 
-    $scope.delete=function(){
-
+    $scope.delete=function(id){
+		for (c in $scope.cart)
+			{
+				if($scope.cart[c].id ==id)
+				{
+					$scope.cart.total-=$scope.cart[c].total;
+					$scope.cart.total=Math.round($scope.cart.total*100)/100;
+					$scope.cart.splice(c,1);
+				}
+					
+			}
     };
 
 
