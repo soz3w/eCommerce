@@ -164,6 +164,13 @@
                   margin-left :5%;
                   width:40%;
                 }
+                .css-form input.ng-invalid.ng-touched {
+                  background-color: #FA787E;
+                }
+
+                .css-form input.ng-valid.ng-touched {
+                  background-color: #78FA89;
+                }
                 
                
                

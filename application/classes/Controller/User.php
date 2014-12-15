@@ -20,39 +20,55 @@ class Controller_User extends Controller {
 		{	 
 			  try
 			  {
-			  	 $username = $_POST["username"];
-			  	 $password = $_POST["password"];
+			  	 $myData= json_decode($_POST['myData']);		
+			  	 $myData =  (array) $myData;
+			  	 $useremail = $myData["email"];
+			  	 $password = $myData["password"];
 
-			  	if (empty($username))
-			  		throw new Exception("empty login");
+			  	if (empty($useremail))
+			  		throw new Exception("empty email");
 			  	if (empty($password))
 			  		throw new Exception("empty password");
 
-			    $account = new Model_Account();	   
-			    $userKnown  =  $account->authenf($username);
-
+			    $account = new Model_User();	   
+			    $userKnown  =  $account->authenf($useremail);
+			   
 				if ($userKnown==null)
 						throw new Exception("unknown user");
 					
-				  if(!password_verify($password,$userKnown->password))
-				  		throw new Exception("Invalid login or password");
+				  if(!password_verify($password,$userKnown->UserPassword))
+				  		throw new Exception("Invalid login or password");	
 
-				  	$this->request->redirect("index");
+				  	$_SESSION["UserEmail"]=	$useremail;		  	
 
 			  }
 			  catch(Exception $e)
-			  {
-			
-			  	$_SESSION["errorMessage"]= $e->getMessage();
-			  	$this->response->body($view);
+			  {			
+			  	header('Content-type: application/json');
+			  	echo '{"msgError":"'.$e->getMessage().'"}';
 			  }
 
 		}
 		else
 		{
+			
 			$this->response->body($view);
 			
 		}
+	}
+	public function action_getSession()
+	{
+		session_start();
+		$session = json_encode($_SESSION);
+		header('Content-type: application/json');
+		echo $session ;
+	}
+	public function action_payment()
+	{
+		session_start();
+		$view=View::Factory("payment/payment");
+		$this->response->body($view);
+
 	}
 	
 	public function action_register()
@@ -63,7 +79,7 @@ class Controller_User extends Controller {
 		{	 
 			$myData= json_decode($_POST['myData']);		
 			  $myData =  (array) $myData;
-			  
+			  unset($myData["UserPassword2"]);
 			 
 			  try
 			  {

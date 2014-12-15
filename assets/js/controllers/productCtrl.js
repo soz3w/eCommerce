@@ -46,25 +46,17 @@ app.controller('ProductsController',function($scope,$rootScope,$q,ProductFactory
 	
 	$scope.cart=[];
 	
-	$scope.addToCart= function(id){
-		
+	$scope.addToCart= function(id){		
 		for (var p in $scope.products) {
-					if ($scope.products[p].id==id)
-					{
-						$scope.cart.push($scope.products[p]);
-						//console.log($scope.cart);
-					}
+		 if ($scope.products[p].id==id)
+			$scope.cart.push($scope.products[p]);				
 
-			}
-		//window.localStorage.setItem(key, value);
-		
-
-		ProductFactory.prepForBroadcast($scope.cart);
-		
+		}
+	
+		ProductFactory.prepForBroadcast($scope.cart);		
 		$scope.$on('handleAddToCart',function(){
-					$scope.cart=ProductFactory.cart;
-			});
-		
+				$scope.cart=ProductFactory.cart;
+		});		
 	};
 
 

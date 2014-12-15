@@ -7,12 +7,12 @@ class Model_User {
 	{
 		$this->db = new Helper_database();
 	}
-	public function authenf($login)
+	public function authenf($email)
 	{
 		$sql =  "select *";
 		$sql.=  " from users ";
-		$sql.= " where username = ?";
-		return $this->db->queryOne($sql, array($login));
+		$sql.= " where UserEmail = ?";
+		return $this->db->queryOne($sql, array($email));
 	}
 	public function getUsers($limit1=0, $limit2=100)
 	{

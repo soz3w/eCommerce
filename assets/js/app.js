@@ -8,6 +8,7 @@ app.config(function($routeProvider){
 		.when('/',{templateUrl:'product/index',controller: 'ProductsController'})
 		.when('/products',{templateUrl:'product/index',controller: 'ProductsController'})
 		.when('/cart',{templateUrl:'cart/getCart',controller: 'OrderController'})
+		.when('/payment',{templateUrl:'user/payment',controller: 'PaymentController'})
 		.when('/register',{templateUrl:'user/register',controller: 'UsersController'})
 		.when('/login',{templateUrl:'user/login',controller: 'UsersController'})		
 		.when('/essai',{templateUrl:'assets/js/views/essai.html',controller: 'ContactController'})

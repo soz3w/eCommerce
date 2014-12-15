@@ -13,7 +13,6 @@ class Controller_Product extends Controller {
 	public function action_getSession()
 	{
 		session_start();
-		$_SESSION["email"]="aa@bb.fr";
 		$session = json_encode($_SESSION);
 		header('Content-type: application/json');
 		echo $session ;

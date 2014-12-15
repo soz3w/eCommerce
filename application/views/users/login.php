@@ -1,35 +1,23 @@
-<?php 
-    
-    if (isset($_SESSION["errorMessage"]))
-    {
-        $msg = $_SESSION["errorMessage"];
-         unset($_SESSION["errorMessage"]);
-    }
-        
 
-    
-   
 
-?>
-
-<h4></h4>
-
-<form role="form" class="form-horizontal col-xs-7">
- <p class="warning" id="MessageError"></p>
-    <div class="form-group has-error has-feedback" >
+<form name="form" class="form-horizontal css-form col-xs-7" novalidate>  
+ <h4 class="msgError" ng-show="showError"></h4>
+    <div class="form-group" >
       <label for="idLogin" class="col-xs-3 control-label">Email</label>
-      <div class="col-xs-3">
-        <input class="form-control input-sm" type="email" name="email" ng-model="user.email">
+      <div class="col-xs-6">
+        <input ng-click="showError=false;" class="form-control input-sm" 
+            type="email" name="email" ng-model="user.email">
       </div>
-      <div class="col-xs-offset-6"></div>
+      <div class="col-xs-offset-3"></div>
     </div>
     
     <div class="form-group">
       <label for="idPassword" class="col-xs-3 control-label">Password</label>
-      <div class="col-xs-3">
-        <input class="form-control input-sm" type="password" name="password" ng-model="user.password">
+      <div class="col-xs-6">
+        <input ng-click="showError=false;" class="form-control input-sm" 
+            type="password" name="password" ng-model="user.password">
       </div>
-      <div class="col-xs-offset-6"></div>
+      <div class="col-xs-offset-3"></div>
     </div>
   
     <div class="form-group">        

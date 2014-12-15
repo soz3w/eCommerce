@@ -1,25 +1,10 @@
 
-app.controller('OrderController',function($scope,$rootScope,$q,ProductFactory,$location){
+app.controller('PaymentController',function($scope,$rootScope,$q,ProductFactory,$location){
 
 	//console.log(ProductFactory.cart);
 	//$(".subtotal").each(function(){this}) jquery interessant
 	
-		$scope.cart=ProductFactory.cart;
-		$scope.total=0; 		
-		for (c in $scope.cart) {    				
-			$scope.cart[c].total= parseFloat($scope.cart[c].ProductPrice)*parseFloat($scope.cart[c].quantity);
-			$scope.total+=Math.round($scope.cart[c].total*100)/100;
-		}
-	
-    $scope.update=function(){
-    	$scope.cart.total=0;
-		for (var c = 0; c < $scope.cart.length; c++) {			
-    		$scope.cart[c].total=$scope.cart[c].ProductPrice*$scope.cart[c].quantity;
-    		$scope.cart.total+=$scope.cart[c].total;
-		}
-    	$scope.cart.total=Math.round($scope.cart.total*100)/100;
-    	$scope.edit=false;    	
-    };
+	$scope.cart=window.localStorage.getItem(STORAGE_KEY);
 
     $scope.delete=function(id){
 		for (c in $scope.cart)
